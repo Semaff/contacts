@@ -13,9 +13,10 @@ export const ContactsActionCreators = {
             const contacts = localStorage.getItem('contacts') || "[]";
             const jsonContacts = JSON.parse(contacts) as TContact[];
             jsonContacts.push(contact);
-
-            dispatch(ContactsActionCreators.setContacts(jsonContacts));
             localStorage.setItem("contacts", JSON.stringify(jsonContacts));
+
+            const currentUserContacts = jsonContacts.filter(contact => contact.author === localStorage.getItem("name"));
+            dispatch(ContactsActionCreators.setContacts(currentUserContacts));
         } catch (err) {
             console.log(err);
         }
@@ -26,9 +27,10 @@ export const ContactsActionCreators = {
             const contacts = localStorage.getItem('contacts') || "[]";
             const jsonContacts = JSON.parse(contacts) as TContact[];
             const filteredContacts = jsonContacts.filter(contact => contact.id !== id);
-
-            dispatch(ContactsActionCreators.setContacts(filteredContacts));
             localStorage.setItem("contacts", JSON.stringify(filteredContacts));
+
+            const currentUserContacts = filteredContacts.filter(contact => contact.author === localStorage.getItem("name"));
+            dispatch(ContactsActionCreators.setContacts(currentUserContacts));
         } catch (err) {
             console.log(err);
         }
@@ -48,8 +50,10 @@ export const ContactsActionCreators = {
 
             const filteredContacts = jsonContacts.filter(contact => contact.id !== id);
             filteredContacts.push({ ...contact, name: newName, phone: newPhone });
-            dispatch(ContactsActionCreators.setContacts(filteredContacts));
             localStorage.setItem("contacts", JSON.stringify(filteredContacts));
+
+            const currentUserContacts = filteredContacts.filter(contact => contact.author === localStorage.getItem("name"));
+            dispatch(ContactsActionCreators.setContacts(currentUserContacts));
         } catch (err) {
             console.log(err);
         }
