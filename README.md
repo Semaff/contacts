@@ -5,7 +5,7 @@ Mock users are inside public folder, one of them is: {
     password: 1234
 }
 
-Stack: React, Redux, Redux-Thunk, Typescript, Axios
+Stack: React, Redux, Redux-Thunk, Typescript, Axios\
 Node version: v16.13.2
 
 ### `npm start`
