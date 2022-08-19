@@ -1,19 +1,20 @@
 import { Route, Routes } from "react-router-dom";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { privateRoutes, publicRoutes } from "./routes";
 
 const AppRouter = () => {
-    const isLoggedIn = true;
+    const { isAuth } = useTypedSelector(state => state.authReducer);
 
     return (
         <Routes>
-            {isLoggedIn
+            {isAuth
                 ?
                 privateRoutes.map(route => (
-                    <Route path={route.path} element={route.element} />
+                    <Route key={route.path} path={route.path} element={route.element} />
                 ))
                 :
                 publicRoutes.map(route => (
-                    <Route path={route.path} element={route.element} />
+                    <Route key={route.path} path={route.path} element={route.element} />
                 ))
             }
         </Routes>
