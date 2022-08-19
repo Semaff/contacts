@@ -1,0 +1,37 @@
+.nav {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #000;
+
+    padding: 1rem;
+    background: lightgoldenrodyellow;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav__item {
+    background-color: #000;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    color: #fff;
+    text-transform: none;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+    background: none;
+}
